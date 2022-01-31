@@ -1,0 +1,113 @@
+" Vim Plugin Manager ---------------------------------------
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'junegunn/fzf', { 'do':  { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+
+"Plug 'xolox/vim-session'
+
+
+" Initialize plugin system
+call plug#end()
+" ----------------------------------------------------------
+
+
+"NERDTree
+nnoremap <C-S-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+nnoremap <C-S-b> :NERDTreeToggle<CR>
+" Open the existing NERDTree on each new tab
+autocmd BufWinEnter * silent NERDTreeMirror
+"Exit vim if NERDTree is the last pane
+"autocmd BufEnter * if tabpagenr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"	\ quit | endif
+
+"fzf
+nnoremap <C-S-P> :FZF<CR>
+nnoremap <C-S-F> :Rg<CR>
+
+"Ack
+let g:ackprg = "rg --vimrep"
+" this require to install:
+" $ brew install ripgrep
+
+"language code syntax
+syntax enable
+"Colors
+" color desert
+" great color file from here: https://github.com/sickill/vim-monokai
+"colorscheme monokai "dark
+colorscheme ommonokai "dark  background #252525
+"colorscheme morning "light
+
+
+" colorscheme nehalfdark
+" colorscheme onehalflight
+" https://github.com/sonph/onehalf/tree/master/vim/colors
+" copy this into ~/.vim/colors
+
+
+"Define tab spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+"Enable click mouse
+set mouse=a
+
+"Enable shared clipboard with OSX
+set clipboard=unnamed 
+
+"Numbers
+set number
+"hi lineNr guifg=#555555 ctermfg=242
+hi lineNr guifg=#333333 ctermfg=236
+
+"NonText
+hi NonText ctermfg=234
+
+"Coents
+hi Comment guifg=#333333 ctermfg=237
+
+"Tab bar colors
+hi Title ctermfg=White ctermbg=Black
+hi TabLineSel ctermfg=Black ctermbg=Yellow 
+hi TabLine ctermfg=White ctermbg=Black
+hi TabLineFill ctermfg=235 ctermbg=235
+
+"split color
+hi VertSplit guibg=#333333 guifg=#333333 ctermfg=235 ctermbg=235
+
+"new tab
+map <C-t> :tabnew<CR>
+
+"encoding
+set encoding=UTF-8
+set anti gfn=Ubuntu\ Mono:h16 "gvim
+
+set nowrap
+
+"Git
+highlight SignColumn guibg=#222222 ctermbg=235
+
+
+"Vim Airline
+let g:airline_powerline_fonts=0
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#left_sep = '▛'
+let g:airline#extensions#tabline#left_alt_sep = '▛'
+let g:airline_left_sep = '▛'
+let g:airline_left_alt_sep = '▛'
+let g:airline_right_sep = '▜'
+let g:airline_right_alt_sep = '▜'
+let g:airline_theme='wombat'
+
