@@ -21,6 +21,9 @@ RUN vim +'PlugInstall --sync' +qa
 # colors for ls
 RUN echo "LS_COLORS=$LS_COLORS:'tw=00;34:ow=01;34:'; export LS_COLORS" >> ~/.bashrc
 
+# alias
+RUN echo "alias gst=\"git status\"" >> ~/.bashrc
+
 # git
 COPY git/git-branch-prompt.sh /root/git-branch-prompt.sh
 RUN cat /root/git-branch-prompt.sh >> ~/.bashrc

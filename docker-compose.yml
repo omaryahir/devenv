@@ -2,8 +2,9 @@ version: "3.1"
 services:
   oyapp:
     restart: always
-    build: .
     volumes:
       - ../:/zrepos
       - ~/.ssh:/root/.ssh
-    command: tail -F anything
+    build: .
+    command: bash -c "chmod 600 /root/.ssh/id_rsa && tail -F anything"
+
