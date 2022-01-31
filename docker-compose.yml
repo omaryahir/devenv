@@ -5,5 +5,5 @@ services:
     build: .
     volumes:
       - ../:/zrepos
-
+      - ~/.ssh:/root/.ssh
     command: tail -F anything
